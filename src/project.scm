@@ -1,6 +1,15 @@
-(use-modules (oop goops))
+(use-modules (srfi srfi-9))
 
-(define-class <project> ()
-  (name #:init-value "my-project" #:getter get-name #:setter set-name)
-  (languages #:init-value (list 'c) #:getter get-langs #:setter set-langs)
-  )
+(define (get-user-name) (passwd:name (getpwuid geteuid)))
+
+(define-record-type <project>
+  (make-project name author languages version sm-version)
+  project?
+  (name       project-name)
+  (author     project-author)
+  (languages  project-languages)
+  (version    project-version)
+  (sm-version project-sm-version))
+
+(define-module (src project)
+  #:export (<project> get-user-name))

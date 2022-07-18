@@ -1,10 +1,10 @@
 ;; Example build file for Schemake v0.1
 
 (project :name "DXVK"
+         :author "doitsujin"
          :languages ('c 'cpp)
          :version "v1.10.1"
-         :sm-version ">= 0.1"
-         :compiler-opts ("cpp_std=c++17"))
+         :sm-version ">= 0.1")
 
 (define cpu-family target-machine->cpu-family)
 
