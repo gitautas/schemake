@@ -1,7 +1,7 @@
 #!/usr/bin/env -S  guile --no-auto-compile --no-debug -e main -s
 !#
 
-;;;; Schemake is a minimalistic ninja build generator intended for use for my own C/C++ projects.
+;;; Schemake is a minimalistic ninja build generator intended for use for my own C/C++ projects.
 
 ;; Disable backtrace messages
 (debug-disable 'backtrace)
