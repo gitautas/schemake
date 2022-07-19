@@ -1,4 +1,4 @@
-;; Example build file for Schemake v0.1
+;;; Example build file for Schemake v0.1
 
 (project :name "DXVK"
          :author "doitsujin"
@@ -32,11 +32,8 @@
                    ;; work properly as well as avoiding a memcpy from the Wine loader.
                    "-Wl--file-alignment=4096"))
 
-(cond (and
-     (option "debug")
-     (eqv? (get-target-machine system) "windows"))
-    (append compiler-args (list
-                           "-gstrict-dwarf" "-gdwarf-2")))
+(if (and (option "debug") (eqv? (get-target-machine system) "windows"))
+    (append compiler-args (list "-gstrict-dwarf" "-gdwarf-2")))
 
 (if (option "build_id")
     (append link-args "-Wl,--build-id"))
@@ -61,7 +58,7 @@
 
 (define lib-d3dcompiler-47
   (cond ((dxvk-is-msvc) (find-library cpp "d3dcompiler"))
-        else(find-library cpp "d3dcompiler_47")))
+        (else (find-library cpp "d3dcompiler_47"))))
 
 (define glsl-compiler (find-program "glslangValidator"))
 (define glsl-args (list
@@ -73,5 +70,6 @@
                    "-o"
                    "@OUTPUT@"))
 
-(cond (let output (open-output-pipe "glslValidator --quiet --version") (eqv? 0 (status:exit-val (close-pipe output))))
-      (string-append glsl-args "--quiet"))
+(let ((output (open-output-pipe "glslValidator --quiet --version")))
+  (if (eqv? 0 (status:exit-val (close-pipe output)))
+    (string-append glsl-args "--quiet")))

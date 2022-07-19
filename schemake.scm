@@ -1,7 +1,7 @@
 #!/usr/bin/env -S  guile --no-auto-compile --no-debug -e main -s
 !#
 
-;;;; Schemake is a minimalistic ninja build generator intended for use for my own C/C++ projects.
+;;; Schemake is a minimalistic ninja build generator intended for use for my own C/C++ projects.
 
 ;; Disable backtrace messages
 (debug-disable 'backtrace)
@@ -13,7 +13,7 @@
 (define sm-version "0.1")
 
 (define (main args)
-  (let proj (make-project "a" get-user-name '('c 'cpp) "v0.1" sm-version)
+  (let ((proj (make-project "a" get-user-name '('c 'cpp) "v0.1" sm-version)))
     (display proj)
     (newline))
   ;; Check for a build.scm file in the working directory
