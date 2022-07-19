@@ -13,7 +13,7 @@
 (define sm-version "0.1")
 
 (define (main args)
-  (let proj (make-project "a" get-user-name '('c 'cpp) "v0.1" sm-version)
+  (let ((proj (make-project "a" get-user-name '('c 'cpp) "v0.1" sm-version)))
     (display proj)
     (newline))
   ;; Check for a build.scm file in the working directory
