@@ -4,17 +4,17 @@
 ;;; Schemake is a minimalistic ninja build generator intended for use for my own C/C++ projects.
 
 ;; Disable backtrace messages
-(debug-disable 'backtrace)
+;; (debug-disable 'backtrace)
 
-;; Local modules
-(use-modules (src project))
+;; Local includes
+(include "./src/project.scm")
 
 ;; Constants
-(define sm-version "0.1")
+(define schemake-version "0.1")
 
 (define (main args)
-  (let ((proj (make-project "a" get-user-name '('c 'cpp) "v0.1" sm-version)))
-    (display proj)
-    (newline))
   ;; Check for a build.scm file in the working directory
-  (if (not (file-exists? "build.scm")) (error "cannot find build.scm in working directory")))
+  (if (not (file-exists? "build.scm")) (error "cannot find build.scm in working directory"))
+  (include "./build.scm")
+  (display (project-name current-project))
+  )
