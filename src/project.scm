@@ -19,4 +19,4 @@
                   languages
                   (version "v1.0")
                   (sm-version schemake-version))
-  (variable-set! current-project (make-project name author languages version sm-version)))
+  (set! current-project (make-project name author languages version sm-version)))

@@ -16,5 +16,4 @@
   ;; Check for a build.scm file in the working directory
   (if (not (file-exists? "build.scm")) (error "cannot find build.scm in working directory"))
   (include "./build.scm")
-  (display (project-name current-project))
-  )
+  (display (project-name current-project)))
