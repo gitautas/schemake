@@ -1,5 +1,8 @@
 (project #:name "schemake-test"
-         #:author "Gintautas Kazlauskas"
-         #:languages (list 'c 'cpp)
+         #:author "LP"
+         #:languages '('c 'cpp)
          #:version "0.1"
-         #:sm-version ">= 0.1")
+         #:sm-version ">= 0.1"
+         #:build-dir "build")
+
+(executable "schemake-test" '("test.c"))
